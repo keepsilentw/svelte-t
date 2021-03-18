@@ -65,7 +65,6 @@
 <label for="avater">
   Upload a picture:
 </label>
-
 <input
   accept="image/jpeg, image/png"
   bind:files
@@ -74,5 +73,19 @@
   type="file"
 />
 
+<p></p>
+
 <label for="many">Upload multiple files of any type:</label>
-<input type="file" name="" id="">
+<input
+  bind:files
+  id="many"
+  multiple
+  type="file"
+/>
+
+{#if files}
+  <h2>Selected files:</h2>
+  {#each Array.from(files) as file}
+    <p>{file.name} ({file.size} bytes) </p>
+  {/each}
+{/if}
